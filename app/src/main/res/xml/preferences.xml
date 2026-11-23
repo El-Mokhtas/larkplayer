@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory android:title="@string/settings_appearance">
+        <SwitchPreferenceCompat
+            android:key="dark_mode"
+            android:title="@string/settings_dark_mode"
+            android:summary="Use dark theme"
+            android:defaultValue="false" />
+
+        <SwitchPreferenceCompat
+            android:key="dynamic_colors"
+            android:title="@string/settings_dynamic_colors"
+            android:summary="Adapt colors from album artwork (Material You)"
+            android:defaultValue="true" />
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/settings_playback">
+        <SwitchPreferenceCompat
+            android:key="crossfade"
+            android:title="@string/settings_crossfade"
+            android:summary="Smooth transition between tracks"
+            android:defaultValue="false" />
+
+        <SeekBarPreference
+            android:key="crossfade_duration"
+            android:title="Crossfade Duration"
+            android:summary="Duration of crossfade in seconds"
+            android:defaultValue="5"
+            android:min="1"
+            android:max="15" />
+
+        <SwitchPreferenceCompat
+            android:key="gapless"
+            android:title="@string/settings_gapless"
+            android:summary="Gapless playback for continuous albums"
+            android:defaultValue="true" />
+
+        <ListPreference
+            android:key="default_repeat_mode"
+            android:title="Default Repeat Mode"
+            android:summary="Repeat mode when starting playback"
+            android:entries="@array/repeat_mode_entries"
+            android:entryValues="@array/repeat_mode_values"
+            android:defaultValue="off" />
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/settings_equalizer">
+        <SwitchPreferenceCompat
+            android:key="equalizer_enabled"
+            android:title="Enable Equalizer"
+            android:summary="Apply equalizer settings to playback"
+            android:defaultValue="true" />
+
+        <ListPreference
+            android:key="equalizer_preset"
+            android:title="Default Preset"
+            android:summary="Equalizer preset to use"
+            android:entries="@array/eq_preset_entries"
+            android:entryValues="@array/eq_preset_values"
+            android:defaultValue="normal" />
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/settings_storage">
+        <Preference
+            android:key="scan_media"
+            android:title="@string/settings_scan_media"
+            android:summary="Scan device for new media files" />
+
+        <Preference
+            android:key="clear_cache"
+            android:title="Clear Cache"
+            android:summary="Clear cached images and temporary files" />
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/settings_backup">
+        <Preference
+            android:key="backup_restore"
+            android:title="@string/settings_backup"
+            android:summary="Backup and restore playlists and settings" />
+
+        <Preference
+            android:key="wifi_transfer"
+            android:title="@string/settings_wifi_transfer"
+            android:summary="Transfer files between devices via WiFi" />
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/settings_about">
+        <Preference
+            android:key="version"
+            android:title="@string/settings_version"
+            android:summary="1.0.0" />
+
+        <Preference
+            android:key="open_source_licenses"
+            android:title="Open Source Licenses"
+            android:summary="View licenses for libraries used" />
+
+        <Preference
+            android:key="privacy_policy"
+            android:title="Privacy Policy"
+            android:summary="Read our privacy policy" />
+    </PreferenceCategory>
+
+</PreferenceScreen>

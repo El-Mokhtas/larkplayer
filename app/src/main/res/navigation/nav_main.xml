@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_main"
+    app:startDestination="@id/songsFragment">
+
+    <fragment
+        android:id="@+id/songsFragment"
+        android:name="com.larkplayer.app.presentation.ui.library.SongsFragment"
+        android:label="@string/nav_songs"
+        tools:layout="@layout/fragment_songs" />
+
+    <fragment
+        android:id="@+id/videosFragment"
+        android:name="com.larkplayer.app.presentation.ui.library.VideosFragment"
+        android:label="@string/nav_videos"
+        tools:layout="@layout/fragment_videos" />
+
+    <fragment
+        android:id="@+id/playlistsFragment"
+        android:name="com.larkplayer.app.presentation.ui.playlist.PlaylistsFragment"
+        android:label="@string/nav_playlists"
+        tools:layout="@layout/fragment_playlists" />
+
+    <fragment
+        android:id="@+id/foldersFragment"
+        android:name="com.larkplayer.app.presentation.ui.folder.FoldersFragment"
+        android:label="@string/nav_folders"
+        tools:layout="@layout/fragment_folders" />
+
+    <fragment
+        android:id="@+id/playerFragment"
+        android:name="com.larkplayer.app.presentation.ui.player.PlayerFragment"
+        android:label="Player"
+        tools:layout="@layout/fragment_player" />
+
+    <fragment
+        android:id="@+id/equalizerFragment"
+        android:name="com.larkplayer.app.presentation.ui.equalizer.EqualizerFragment"
+        android:label="@string/player_equalizer"
+        tools:layout="@layout/fragment_equalizer" />
+
+    <fragment
+        android:id="@+id/lyricsFragment"
+        android:name="com.larkplayer.app.presentation.ui.player.LyricsFragment"
+        android:label="@string/player_lyrics"
+        tools:layout="@layout/fragment_lyrics" />
+
+    <fragment
+        android:id="@+id/queueFragment"
+        android:name="com.larkplayer.app.presentation.ui.player.QueueFragment"
+        android:label="@string/player_queue"
+        tools:layout="@layout/fragment_queue" />
+
+    <fragment
+        android:id="@+id/sleepTimerFragment"
+        android:name="com.larkplayer.app.presentation.ui.player.SleepTimerFragment"
+        android:label="@string/player_sleep_timer"
+        tools:layout="@layout/fragment_sleep_timer" />
+
+    <fragment
+        android:id="@+id/speedFragment"
+        android:name="com.larkplayer.app.presentation.ui.player.SpeedFragment"
+        android:label="@string/player_speed"
+        tools:layout="@layout/fragment_speed" />
+
+    <fragment
+        android:id="@+id/playlistDetailFragment"
+        android:name="com.larkplayer.app.presentation.ui.playlist.PlaylistDetailFragment"
+        android:label="Playlist Detail"
+        tools:layout="@layout/fragment_playlist_detail" />
+
+    <fragment
+        android:id="@+id/folderDetailFragment"
+        android:name="com.larkplayer.app.presentation.ui.folder.FolderDetailFragment"
+        android:label="Folder Detail"
+        tools:layout="@layout/fragment_folder_detail" />
+
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.larkplayer.app.presentation.ui.search.SearchFragment"
+        android:label="Search"
+        tools:layout="@layout/fragment_search" />
+
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.larkplayer.app.presentation.ui.settings.SettingsFragment"
+        android:label="@string/settings_title"
+        tools:layout="@layout/fragment_settings" />
+</navigation>

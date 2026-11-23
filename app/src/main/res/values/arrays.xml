@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="repeat_mode_entries">
+        <item>Off</item>
+        <item>Repeat One</item>
+        <item>Repeat All</item>
+    </string-array>
+    <string-array name="repeat_mode_values">
+        <item>off</item>
+        <item>one</item>
+        <item>all</item>
+    </string-array>
+
+    <string-array name="eq_preset_entries">
+        <item>Normal</item>
+        <item>Pop</item>
+        <item>Rock</item>
+        <item>Jazz</item>
+        <item>Classical</item>
+        <item>Dance</item>
+        <item>Hip Hop</item>
+        <item>Custom</item>
+    </string-array>
+    <string-array name="eq_preset_values">
+        <item>normal</item>
+        <item>pop</item>
+        <item>rock</item>
+        <item>jazz</item>
+        <item>classical</item>
+        <item>dance</item>
+        <item>hip_hop</item>
+        <item>custom</item>
+    </string-array>
+</resources>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_songs"
+        android:icon="@drawable/ic_music_note"
+        android:title="@string/nav_songs" />
+    <item
+        android:id="@+id/nav_videos"
+        android:icon="@drawable/ic_video"
+        android:title="@string/nav_videos" />
+    <item
+        android:id="@+id/nav_playlists"
+        android:icon="@drawable/ic_playlist"
+        android:title="@string/nav_playlists" />
+    <item
+        android:id="@+id/nav_folders"
+        android:icon="@drawable/ic_folder"
+        android:title="@string/nav_folders" />
+</menu>

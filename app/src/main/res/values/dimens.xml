@@ -1,0 +1,63 @@
+<resources>
+    <!-- Spacing -->
+    <dimen name="spacing_xxs">2dp</dimen>
+    <dimen name="spacing_xs">4dp</dimen>
+    <dimen name="spacing_sm">8dp</dimen>
+    <dimen name="spacing_md">12dp</dimen>
+    <dimen name="spacing_lg">16dp</dimen>
+    <dimen name="spacing_xl">24dp</dimen>
+    <dimen name="spacing_xxl">32dp</dimen>
+    <dimen name="spacing_xxxl">48dp</dimen>
+
+    <!-- Corner Radius -->
+    <dimen name="corner_xs">4dp</dimen>
+    <dimen name="corner_sm">8dp</dimen>
+    <dimen name="corner_md">12dp</dimen>
+    <dimen name="corner_lg">16dp</dimen>
+    <dimen name="corner_xl">24dp</dimen>
+    <dimen name="corner_full">9999dp</dimen>
+
+    <!-- Icon Sizes -->
+    <dimen name="icon_xs">16dp</dimen>
+    <dimen name="icon_sm">20dp</dimen>
+    <dimen name="icon_md">24dp</dimen>
+    <dimen name="icon_lg">32dp</dimen>
+    <dimen name="icon_xl">48dp</dimen>
+    <dimen name="icon_xxl">64dp</dimen>
+    <dimen name="icon_artwork_sm">56dp</dimen>
+    <dimen name="icon_artwork_md">80dp</dimen>
+    <dimen name="icon_artwork_lg">120dp</dimen>
+    <dimen name="icon_artwork_xl">200dp</dimen>
+
+    <!-- Player -->
+    <dimen name="player_mini_height">72dp</dimen>
+    <dimen name="player_controls_height">120dp</dimen>
+    <dimen name="player_seekbar_height">4dp</dimen>
+    <dimen name="player_seekbar_thumb">16dp</dimen>
+
+    <!-- Equalizer -->
+    <dimen name="eq_bar_width">12dp</dimen>
+    <dimen name="eq_bar_spacing">8dp</dimen>
+    <dimen name="eq_bar_max_height">120dp</dimen>
+
+    <!-- Visualizer -->
+    <dimen name="visualizer_bar_width">4dp</dimen>
+    <dimen name="visualizer_bar_spacing">2dp</dimen>
+    <dimen name="visualizer_height">100dp</dimen>
+
+    <!-- Typography -->
+    <dimen name="text_size_xxs">10sp</dimen>
+    <dimen name="text_size_xs">12sp</dimen>
+    <dimen name="text_size_sm">14sp</dimen>
+    <dimen name="text_size_md">16sp</dimen>
+    <dimen name="text_size_lg">18sp</dimen>
+    <dimen name="text_size_xl">22sp</dimen>
+    <dimen name="text_size_xxl">28sp</dimen>
+    <dimen name="text_size_xxxl">36sp</dimen>
+
+    <!-- Elevation -->
+    <dimen name="elevation_sm">2dp</dimen>
+    <dimen name="elevation_md">4dp</dimen>
+    <dimen name="elevation_lg">8dp</dimen>
+    <dimen name="elevation_xl">16dp</dimen>
+</resources>

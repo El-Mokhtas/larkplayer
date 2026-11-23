@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/player_background"
+    tools:context=".presentation.ui.player.PlayerFragment">
+
+    <!-- Full screen artwork background -->
+    <ImageView
+        android:id="@+id/iv_background_landscape"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@color/player_background" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/overlay_50" />
+
+    <!-- Left side: Vinyl Visualizer -->
+    <com.larkplayer.app.presentation.ui.player.VinylVisualizerView
+        android:id="@+id/vinyl_visualizer"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="@dimen/spacing_xl"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/right_panel"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Right side: Lyrics + Controls -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/right_panel"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="@dimen/spacing_xl"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/vinyl_visualizer"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <!-- Lyrics -->
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/lyrics_scroll"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginBottom="@dimen/spacing_xl"
+            android:fillViewport="true"
+            app:layout_constraintBottom_toTopOf="@id/bottom_controls"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/tv_lyrics_landscape"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:lineSpacingExtra="@dimen/spacing_lg"
+                android:textAppearance="?attr/textAppearanceHeadlineSmall"
+                android:textColor="@color/player_text_primary"
+                android:textSize="24sp" />
+        </androidx.core.widget.NestedScrollView>
+
+        <!-- Bottom Controls -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/bottom_controls"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/spacing_lg"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <TextView
+                android:id="@+id/tv_title_landscape"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="Song Title"
+                android:textAlignment="center"
+                android:textAppearance="?attr/textAppearanceTitleLarge"
+                android:textColor="@color/player_text_primary"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_artist_landscape"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="Artist Name"
+                android:textAlignment="center"
+                android:textAppearance="?attr/textAppearanceBodyMedium"
+                android:textColor="@color/player_text_secondary"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_title_landscape" />
+
+            <!-- Progress -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_lg"
+                android:layout_marginBottom="@dimen/spacing_lg"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_artist_landscape">
+
+                <TextView
+                    android:id="@+id/tv_current_time_landscape"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0:00"
+                    android:textAppearance="?attr/textAppearanceBodySmall"
+                    android:textColor="@color/player_text_secondary"
+                    app:layout_constraintBottom_toBottomOf="@id/seekbar_landscape"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/seekbar_landscape" />
+
+                <androidx.appcompat.widget.AppCompatSeekBar
+                    android:id="@+id/seekbar_landscape"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/player_seekbar_height"
+                    android:layout_marginHorizontal="@dimen/spacing_md"
+                    android:max="100"
+                    android:progress="0"
+                    android:progressBackgroundTint="@color/player_progress_bg"
+                    android:progressTint="@color/player_progress_active"
+                    android:thumb="@drawable/seekbar_thumb"
+                    app:layout_constraintEnd_toStartOf="@id/tv_total_time_landscape"
+                    app:layout_constraintStart_toEndOf="@id/tv_current_time_landscape"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tv_total_time_landscape"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="3:45"
+                    android:textAppearance="?attr/textAppearanceBodySmall"
+                    android:textColor="@color/player_text_secondary"
+                    app:layout_constraintBottom_toBottomOf="@id/seekbar_landscape"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/seekbar_landscape" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!-- Playback Controls -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/seekbar_landscape">
+
+                <ImageView
+                    android:id="@+id/btn_shuffle_landscape"
+                    android:layout_width="@dimen/icon_lg"
+                    android:layout_height="@dimen/icon_lg"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:padding="@dimen/spacing_xs"
+                    android:src="@drawable/ic_shuffle"
+                    android:tint="@color/player_text_secondary"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/btn_previous_landscape"
+                    android:layout_width="@dimen/icon_xl"
+                    android:layout_height="@dimen/icon_xl"
+                    android:layout_marginStart="@dimen/spacing_xl"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:padding="@dimen/spacing_sm"
+                    android:src="@drawable/ic_skip_previous"
+                    android:tint="@color/player_text_primary"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/btn_shuffle_landscape"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/btn_play_pause_landscape"
+                    android:layout_width="@dimen/icon_artwork_lg"
+                    android:layout_height="@dimen/icon_artwork_lg"
+                    android:layout_marginHorizontal="@dimen/spacing_xl"
+                    android:background="@drawable/play_pause_background"
+                    android:padding="@dimen/spacing_md"
+                    android:src="@drawable/ic_play_large"
+                    android:tint="@color/player_text_primary"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/btn_next_landscape"
+                    app:layout_constraintStart_toEndOf="@id/btn_previous_landscape"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/btn_next_landscape"
+                    android:layout_width="@dimen/icon_xl"
+                    android:layout_height="@dimen/icon_xl"
+                    android:layout_marginEnd="@dimen/spacing_xl"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:padding="@dimen/spacing_sm"
+                    android:src="@drawable/ic_skip_next"
+                    android:tint="@color/player_text_primary"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/btn_repeat_landscape"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/btn_repeat_landscape"
+                    android:layout_width="@dimen/icon_lg"
+                    android:layout_height="@dimen/icon_lg"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:padding="@dimen/spacing_xs"
+                    android:src="@drawable/ic_repeat"
+                    android:tint="@color/player_text_secondary"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
