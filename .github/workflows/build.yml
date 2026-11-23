@@ -20,24 +20,16 @@ jobs:
       with:
         distribution: 'temurin'
         java-version: '17'
-        cache: gradle
 
-    - name: Setup Android SDK
-      uses: android-actions/setup-android@v3
-      with:
-        api-level: 34
-        build-tools-version: 34.0.0
-        cmdline-tools-version: latest
-        ndk-version: r26c
-
-    - name: Grant execute permission for gradlew
-      run: chmod +x gradlew
+    - name: Install Gradle 8.4
+      run: |
+        curl -L --retry 3 --retry-delay 5 -o gradle.zip https://services.gradle.org/distributions/gradle-8.4-bin.zip
+        unzip -q gradle.zip
+        echo "$PWD/gradle-8.4/bin" >> $GITHUB_PATH
+        gradle --version
 
     - name: Build Debug APK
-      run: ./gradlew assembleDebug
-
-    - name: Build Release APK (unsigned)
-      run: ./gradlew assembleRelease
+      run: gradle assembleDebug --no-daemon --stacktrace
 
     - name: Upload Debug APK
       uses: actions/upload-artifact@v4
@@ -45,19 +37,15 @@ jobs:
         name: larkplayer-debug-apk
         path: app/build/outputs/apk/debug/app-debug.apk
         retention-days: 30
+        if-no-files-found: error
 
-    - name: Upload Release APK
+    - name: Upload mapping & reports (debug)
+      if: always()
       uses: actions/upload-artifact@v4
       with:
-        name: larkplayer-release-apk
-        path: app/build/outputs/apk/release/app-release-unsigned.apk
-        retention-days: 30
-
-    - name: Create Release (on tag)
-      if: startsWith(github.ref, 'refs/tags/')
-      uses: softprops/action-gh-release@v2
-      with:
-        files: |
-          app/build/outputs/apk/debug/app-debug.apk
-          app/build/outputs/apk/release/app-release-unsigned.apk
-        generate_release_notes: true
+        name: larkplayer-build-reports
+        path: |
+          app/build/reports/**
+          app/build/outputs/logs/**
+        retention-days: 7
+        if-no-files-found: ignore
