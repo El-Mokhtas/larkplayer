@@ -17,7 +17,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.io.ByteArrayOutputStream
-import java.io.File
+import java.io.File as JavaFile
 import java.io.FileOutputStream
 import java.io.OutputStream
 import java.util.concurrent.Executors
