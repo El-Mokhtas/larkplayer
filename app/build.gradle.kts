@@ -166,6 +166,7 @@ dependencies {
     implementation("com.google.code.gson:gson:2.10.1")
 
     // Google Drive backup
+    implementation("com.google.android.gms:play-services-auth:21.2.0")
     implementation("com.google.api-client:google-api-client-android:2.2.0")
     implementation("com.google.http-client:google-http-client-gson:1.44.1")
     implementation("com.google.apis:google-api-services-drive:v3-rev20231113-2.0.0")
