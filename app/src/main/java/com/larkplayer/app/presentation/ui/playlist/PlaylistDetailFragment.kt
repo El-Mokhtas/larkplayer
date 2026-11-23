@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.larkplayer.app.R
@@ -22,7 +21,11 @@ class PlaylistDetailFragment : Fragment(R.layout.fragment_playlist_detail) {
     private var _binding: FragmentPlaylistDetailBinding? = null
     private val binding get() = _binding!!
     private val viewModel: PlaylistViewModel by viewModels()
-    private val args: PlaylistDetailFragmentArgs by navArgs()
+    private val args: PlaylistDetailArgs by lazy {
+        PlaylistDetailArgs(arguments?.getLong("playlistId", 0L) ?: 0L)
+    }
+
+    private data class PlaylistDetailArgs(val playlistId: Long)
 
     private val adapter = MediaItemAdapter(
         onItemClick = { media ->

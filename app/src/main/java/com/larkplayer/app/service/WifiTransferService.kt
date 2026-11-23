@@ -8,6 +8,7 @@ import android.util.Log
 import com.larkplayer.app.util.NetworkUtils
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.cancel
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import java.io.File

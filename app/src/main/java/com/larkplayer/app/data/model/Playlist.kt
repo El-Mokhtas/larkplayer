@@ -11,15 +11,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 @Entity(
     tableName = "playlists",
-    indices = [Index(value = ["name"], unique = true)],
-    foreignKeys = [
-        ForeignKey(
-            entity = MediaItem::class,
-            parentColumns = ["id"],
-            childColumns = ["mediaItemId"],
-            onDelete = ForeignKey.CASCADE
-        )
-    ]
+    indices = [Index(value = ["name"], unique = true)]
 )
 data class Playlist(
     @PrimaryKey(autoGenerate = true)

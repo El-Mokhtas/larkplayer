@@ -5,6 +5,7 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
+import com.larkplayer.app.data.model.EqualizerConverters
 import com.larkplayer.app.data.model.EqualizerPresetCustom
 import com.larkplayer.app.data.model.EqualizerSettings
 import com.larkplayer.app.data.model.Folder
@@ -25,7 +26,7 @@ import com.larkplayer.app.data.model.PlaylistItem
     version = 1,
     exportSchema = false
 )
-@TypeConverters(MediaTypeConverter::class)
+@TypeConverters(MediaTypeConverter::class, EqualizerConverters::class)
 abstract class AppDatabase : RoomDatabase() {
 
     abstract fun mediaDao(): MediaDao

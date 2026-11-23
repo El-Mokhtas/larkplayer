@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.fragment.navArgs
 import com.larkplayer.app.R
 import com.larkplayer.app.databinding.FragmentFolderDetailBinding
 import com.larkplayer.app.presentation.adapter.MediaItemAdapter
@@ -20,7 +19,6 @@ class FolderDetailFragment : Fragment(R.layout.fragment_folder_detail) {
     private var _binding: FragmentFolderDetailBinding? = null
     private val binding get() = _binding!!
     private val viewModel: FolderViewModel by viewModels()
-    private val args: FolderDetailFragmentArgs by navArgs()
 
     private val adapter = MediaItemAdapter(
         onItemClick = { media ->

@@ -15,6 +15,7 @@ import com.larkplayer.app.data.model.Playlist
 import com.larkplayer.app.data.source.local.AppDatabase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
 import java.io.ByteArrayOutputStream
 import java.io.File as JavaFile

@@ -8,7 +8,7 @@ import android.view.animation.AnimationUtils
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.fragment.navArgs
+import androidx.navigation.fragment.findNavController
 import com.airbnb.lottie.LottieAnimationView
 import com.bumptech.glide.Glide
 import com.larkplayer.app.R
@@ -16,6 +16,7 @@ import com.larkplayer.app.databinding.FragmentPlayerBinding
 import com.larkplayer.app.presentation.viewmodel.PlayerViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
@@ -24,7 +25,11 @@ class PlayerFragment : Fragment(R.layout.fragment_player) {
     private var _binding: FragmentPlayerBinding? = null
     private val binding get() = _binding!!
     private val viewModel: PlayerViewModel by viewModels()
-    private val args: PlayerFragmentArgs by navArgs()
+    private val args: PlayerArgs by lazy {
+        PlayerArgs(arguments?.getLong("mediaId", 0L) ?: 0L)
+    }
+
+    private data class PlayerArgs(val mediaId: Long)
 
     private var isFullscreen = false
 

@@ -18,7 +18,6 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 @HiltViewModel
 class FolderViewModel @Inject constructor(
     private val getAllFoldersUseCase: GetAllFoldersUseCase,
-    private val getSubFoldersUseCase: GetSubFoldersUseCase,
     private val getFolderByPathUseCase: GetFolderByPathUseCase,
     private val scanFoldersUseCase: ScanFoldersUseCase,
     private val getByFolderUseCase: GetByFolderUseCase

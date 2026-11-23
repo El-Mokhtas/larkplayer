@@ -3,7 +3,6 @@ package com.larkplayer.app.di
 import android.content.Context
 import androidx.media3.common.MediaItem
 import androidx.media3.exoplayer.ExoPlayer
-import androidx.media3.exoplayer.MediaMetadataRetriever
 import androidx.media3.session.MediaController
 import androidx.media3.session.MediaSession
 import androidx.media3.session.MediaSessionService
@@ -25,12 +24,6 @@ object ServiceModule {
     @Singleton
     fun provideExoPlayer(@ApplicationContext context: Context): ExoPlayer {
         return ExoPlayer.Builder(context).build()
-    }
-
-    @Provides
-    @Singleton
-    fun provideMediaMetadataRetriever(@ApplicationContext context: Context): MediaMetadataRetriever {
-        return MediaMetadataRetriever(context)
     }
 
     @Provides

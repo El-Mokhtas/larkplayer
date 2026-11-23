@@ -119,6 +119,7 @@ dependencies {
     implementation("androidx.room:room-runtime:$room")
     implementation("androidx.room:room-ktx:$room")
     ksp("androidx.room:room-compiler:$room")
+    implementation("androidx.room:room-paging:$room")
 
     // Navigation
     implementation("androidx.navigation:navigation-fragment-ktx:$navigation")
