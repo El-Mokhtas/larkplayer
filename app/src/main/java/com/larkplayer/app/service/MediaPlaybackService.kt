@@ -270,7 +270,7 @@ class MediaPlaybackService : MediaSessionService() {
     }
 
     private fun fetchLyricsIfAvailable() {
-        currentMediaItem?.lyricsPath?.let { path =>
+        currentMediaItem?.lyricsPath?.let { path ->
             scope.launch(Dispatchers.IO) {
                 val lyrics = LyricsParser.parseLyricsFile(this@MediaPlaybackService, path)
                 // Notify UI via callback or LiveData
