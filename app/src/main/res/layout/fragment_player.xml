@@ -309,6 +309,17 @@
             app:layout_constraintEnd_toStartOf="@id/btn_sleep_timer"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <TextView
+            android:id="@+id/tv_speed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1.00x"
+            android:textAppearance="?attr/textAppearanceBodySmall"
+            android:textColor="@color/player_text_secondary"
+            app:layout_constraintEnd_toEndOf="@id/btn_speed"
+            app:layout_constraintStart_toStartOf="@id/btn_speed"
+            app:layout_constraintTop_toTopOf="@id/btn_speed" />
+
         <ImageView
             android:id="@+id/btn_sleep_timer"
             android:layout_width="@dimen/icon_lg"
