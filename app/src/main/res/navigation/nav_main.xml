@@ -33,7 +33,24 @@
         android:id="@+id/playerFragment"
         android:name="com.larkplayer.app.presentation.ui.player.PlayerFragment"
         android:label="Player"
-        tools:layout="@layout/fragment_player" />
+        tools:layout="@layout/fragment_player">
+
+        <action
+            android:id="@+id/action_playerFragment_to_equalizerFragment"
+            app:destination="@id/equalizerFragment" />
+        <action
+            android:id="@+id/action_playerFragment_to_lyricsFragment"
+            app:destination="@id/lyricsFragment" />
+        <action
+            android:id="@+id/action_playerFragment_to_queueFragment"
+            app:destination="@id/queueFragment" />
+        <action
+            android:id="@+id/action_playerFragment_to_sleepTimerFragment"
+            app:destination="@id/sleepTimerFragment" />
+        <action
+            android:id="@+id/action_playerFragment_to_speedFragment"
+            app:destination="@id/speedFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/equalizerFragment"
