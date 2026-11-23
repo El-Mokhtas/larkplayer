@@ -13,7 +13,6 @@
 
         <!-- Tertiary Colors -->
         <item name="colorTertiary">@color/tertiary</item>
-        <item name="colorTertiaryVariant">@color/tertiary_variant</item>
         <item name="colorOnTertiary">@color/on_tertiary</item>
 
         <!-- Surface Colors -->
@@ -21,10 +20,6 @@
         <item name="colorSurfaceVariant">@color/surface_variant</item>
         <item name="colorOnSurface">@color/on_surface</item>
         <item name="colorOnSurfaceVariant">@color/on_surface_variant</item>
-
-        <!-- Background Colors -->
-        <item name="colorBackground">@color/background</item>
-        <item name="colorOnBackground">@color/on_background</item>
 
         <!-- Error Colors -->
         <item name="colorError">@color/error</item>
@@ -35,14 +30,6 @@
         <!-- Outline -->
         <item name="colorOutline">@color/outline</item>
         <item name="colorOutlineVariant">@color/outline_variant</item>
-
-        <!-- Scrim -->
-        <item name="colorScrim">@color/scrim</item>
-
-        <!-- Inverse -->
-        <item name="colorInverseSurface">@color/inverse_surface</item>
-        <item name="colorInverseOnSurface">@color/inverse_on_surface</item>
-        <item name="colorInversePrimary">@color/inverse_primary</item>
 
         <!-- Status Bar & Navigation Bar -->
         <item name="android:statusBarColor">@android:color/transparent</item>
@@ -100,7 +87,7 @@
         <item name="shapeAppearance">@style/ShapeAppearance.LarkPlayer.BottomSheet</item>
     </style>
 
-    <style name="ShapeAppearance.LarkPlayer.BottomSheet" parent="ShapeAppearance.Material3.BottomSheet">
+    <style name="ShapeAppearance.LarkPlayer.BottomSheet" parent="ShapeAppearance.Material3.LargeComponent">
         <item name="cornerFamilyTopLeft">rounded</item>
         <item name="cornerFamilyTopRight">rounded</item>
         <item name="cornerSizeTopLeft">24dp</item>
