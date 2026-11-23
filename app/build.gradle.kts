@@ -159,6 +159,17 @@ dependencies {
     implementation("io.coil-kt:coil:$coil")
     implementation("io.coil-kt:coil-compose:$coil")
 
+    // Image Loading - Glide
+    implementation("com.github.bumptech.glide:glide:4.16.0")
+
+    // JSON
+    implementation("com.google.code.gson:gson:2.10.1")
+
+    // Google Drive backup
+    implementation("com.google.api-client:google-api-client-android:2.2.0")
+    implementation("com.google.http-client:google-http-client-gson:1.44.1")
+    implementation("com.google.apis:google-api-services-drive:v3-rev20231113-2.0.0")
+
     // Lottie for animations
     implementation("com.airbnb.android:lottie:$lottie")
 
