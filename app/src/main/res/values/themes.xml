@@ -106,4 +106,21 @@
         <item name="cornerSizeTopLeft">24dp</item>
         <item name="cornerSizeTopRight">24dp</item>
     </style>
+
+    <style name="ShapeAppearance.LarkPlayer.SmallComponent" parent="ShapeAppearance.Material3.SmallComponent" />
+    <style name="ShapeAppearance.LarkPlayer.MediumComponent" parent="ShapeAppearance.Material3.MediumComponent" />
+    <style name="ShapeAppearance.LarkPlayer.LargeComponent" parent="ShapeAppearance.Material3.LargeComponent" />
+
+    <style name="TextAppearance.LarkPlayer.HeadlineLarge" parent="TextAppearance.Material3.HeadlineLarge" />
+    <style name="TextAppearance.LarkPlayer.HeadlineMedium" parent="TextAppearance.Material3.HeadlineMedium" />
+    <style name="TextAppearance.LarkPlayer.HeadlineSmall" parent="TextAppearance.Material3.HeadlineSmall" />
+    <style name="TextAppearance.LarkPlayer.TitleLarge" parent="TextAppearance.Material3.TitleLarge" />
+    <style name="TextAppearance.LarkPlayer.TitleMedium" parent="TextAppearance.Material3.TitleMedium" />
+    <style name="TextAppearance.LarkPlayer.TitleSmall" parent="TextAppearance.Material3.TitleSmall" />
+    <style name="TextAppearance.LarkPlayer.BodyLarge" parent="TextAppearance.Material3.BodyLarge" />
+    <style name="TextAppearance.LarkPlayer.BodyMedium" parent="TextAppearance.Material3.BodyMedium" />
+    <style name="TextAppearance.LarkPlayer.BodySmall" parent="TextAppearance.Material3.BodySmall" />
+    <style name="TextAppearance.LarkPlayer.LabelLarge" parent="TextAppearance.Material3.LabelLarge" />
+    <style name="TextAppearance.LarkPlayer.LabelMedium" parent="TextAppearance.Material3.LabelMedium" />
+    <style name="TextAppearance.LarkPlayer.LabelSmall" parent="TextAppearance.Material3.LabelSmall" />
 </resources>

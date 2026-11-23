@@ -30,6 +30,7 @@
     <string name="library_empty">No media found</string>
     <string name="library_scanning">Scanning media files…</string>
     <string name="library_permission_needed">Storage permission needed to access media files</string>
+    <string name="library_scan_media">Scan media</string>
     <string name="library_grant_permission">Grant Permission</string>
 
     <!-- Playlists -->

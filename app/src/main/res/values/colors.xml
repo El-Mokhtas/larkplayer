@@ -112,6 +112,10 @@
     <color name="overlay_70">#B3000000</color>
     <color name="overlay_90">#E6000000</color>
 
+    <!-- Bottom navigation -->
+    <color name="bottom_nav_icon_color">#79747E</color>
+    <color name="bottom_nav_text_color">#1D1B20</color>
+
     <!-- Transparent -->
     <color name="transparent">#00000000</color>
 </resources>

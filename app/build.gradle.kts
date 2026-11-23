@@ -25,7 +25,7 @@ android {
     buildTypes {
         release {
             isMinifyEnabled = true
-            shrinkResources = true
+            isShrinkResources = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
@@ -132,6 +132,7 @@ dependencies {
 
     // Paging
     implementation("androidx.paging:paging-runtime-ktx:$paging")
+    implementation("androidx.preference:preference-ktx:1.2.1")
 
     // ExoPlayer / Media3
     implementation("com.google.android.exoplayer:exoplayer:$exoplayer")
