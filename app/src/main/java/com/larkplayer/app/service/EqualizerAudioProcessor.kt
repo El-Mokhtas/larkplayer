@@ -1,11 +1,12 @@
 package com.larkplayer.app.service
 
+import android.media.audiofx.BassBoost
 import android.media.audiofx.Equalizer
 import android.media.audiofx.Virtualizer
-import android.media.audiofx.BassBoost
 import androidx.media3.common.audio.AudioProcessor
 import com.larkplayer.app.data.model.EqualizerSettings
-import com.larkplayer.app.data.model.EqualizerPreset
+import java.nio.ByteBuffer
+import java.nio.ByteOrder
 
 class EqualizerAudioProcessor : AudioProcessor {
 
@@ -14,24 +15,38 @@ class EqualizerAudioProcessor : AudioProcessor {
     private var bassBoost: BassBoost? = null
     private var sessionId = 0
     private var currentSettings = EqualizerSettings.DEFAULT
+    private var inputEnded = false
+    private var outputBuffer: ByteBuffer = AudioProcessor.EMPTY_BUFFER
 
     override fun configure(inputAudioFormat: AudioProcessor.AudioFormat): AudioProcessor.AudioFormat {
         return inputAudioFormat
     }
 
-    override fun isActive(): Boolean = true
+    override fun isActive(): Boolean = false
 
-    override fun queueInput(inputBuffer: java.nio.ByteBuffer): Int {
-        return AudioProcessor.PROCESSING_RESULT_OK
+    override fun queueInput(inputBuffer: ByteBuffer) {
+        // No audio transformation; effects are applied via Android audiofx on sessionId.
     }
 
-    override fun getOutput(outputBuffer: java.nio.ByteBuffer): Int {
-        return AudioProcessor.PROCESSING_RESULT_OK
+    override fun getOutput(): ByteBuffer {
+        val output = outputBuffer
+        outputBuffer = AudioProcessor.EMPTY_BUFFER
+        return output
     }
 
-    override fun flush() {}
+    override fun isEnded(): Boolean = inputEnded
+
+    override fun flush() {
+        outputBuffer = AudioProcessor.EMPTY_BUFFER
+        inputEnded = false
+    }
+
+    override fun queueEndOfStream() {
+        inputEnded = true
+    }
 
     override fun reset() {
+        flush()
         release()
     }
 
@@ -44,16 +59,10 @@ class EqualizerAudioProcessor : AudioProcessor {
 
     private fun initializeEffects() {
         release()
-
         try {
-            equalizer = Equalizer(0, sessionId)
-            equalizer?.enabled = true
-
-            virtualizer = Virtualizer(0, sessionId)
-            virtualizer?.enabled = true
-
-            bassBoost = BassBoost(0, sessionId)
-            bassBoost?.enabled = true
+            equalizer = Equalizer(0, sessionId).apply { enabled = true }
+            virtualizer = Virtualizer(0, sessionId).apply { enabled = true }
+            bassBoost = BassBoost(0, sessionId).apply { enabled = true }
         } catch (e: Exception) {
             e.printStackTrace()
         }
@@ -61,78 +70,51 @@ class EqualizerAudioProcessor : AudioProcessor {
 
     fun applySettings(settings: EqualizerSettings) {
         currentSettings = settings
-
-        // Apply equalizer bands
         equalizer?.let { eq ->
             val bands = settings.getBandsForPreset()
-            val numBands = eq.numberOfBands
-            val minLevel = eq.bandLevelRange[0]
-            val maxLevel = eq.bandLevelRange[1]
-
+            val numBands = eq.numberOfBands.toInt()
+            val minLevel = eq.bandLevelRange[0].toInt()
+            val maxLevel = eq.bandLevelRange[1].toInt()
             for (i in 0 until numBands) {
                 val gain = if (i < bands.size) bands[i] else 0f
-                // Convert from dB to millibel (100 * dB)
-                val level = (gain * 100).coerceIn(minLevel, maxLevel).toShort()
+                val level = (gain * 100).toInt().coerceIn(minLevel, maxLevel).toShort()
                 try {
-                    eq.setBandLevel((i + 1).toShort(), level)
+                    eq.setBandLevel(i.toShort(), level)
                 } catch (e: Exception) {
                     e.printStackTrace()
                 }
             }
         }
-
-        // Apply bass boost
         bassBoost?.let { bb ->
             if (settings.bassBoostEnabled) {
-                val strength = (settings.bassBoostStrength * 1000).toShort() // 0-1000
                 try {
-                    bb.strength = strength
+                    bb.strength = (settings.bassBoostStrength * 1000).toInt().coerceIn(0, 1000).toShort()
                     bb.enabled = true
-                } catch (e: Exception) {
-                    e.printStackTrace()
-                }
-            } else {
-                bb.enabled = false
-            }
+                } catch (e: Exception) { e.printStackTrace() }
+            } else bb.enabled = false
         }
-
-        // Apply virtualizer
         virtualizer?.let { vz ->
             if (settings.virtualizerEnabled) {
-                val strength = (settings.virtualizerStrength * 1000).toShort() // 0-1000
                 try {
-                    vz.strength = strength
+                    vz.strength = (settings.virtualizerStrength * 1000).toInt().coerceIn(0, 1000).toShort()
                     vz.enabled = true
-                } catch (e: Exception) {
-                    e.printStackTrace()
-                }
-            } else {
-                vz.enabled = false
-            }
+                } catch (e: Exception) { e.printStackTrace() }
+            } else vz.enabled = false
         }
     }
 
     fun getBandLevels(): IntArray {
         return equalizer?.let { eq ->
-            val numBands = eq.numberOfBands
-            val levels = IntArray(numBands)
-            for (i in 0 until numBands) {
-                levels[i] = eq.getBandLevel((i + 1).toShort())
-            }
-            levels
+            val numBands = eq.numberOfBands.toInt()
+            IntArray(numBands) { i -> eq.getBandLevel(i.toShort()).toInt() }
         } ?: intArrayOf()
     }
 
     private fun release() {
-        equalizer?.release()
-        equalizer = null
-        virtualizer?.release()
-        virtualizer = null
-        bassBoost?.release()
-        bassBoost = null
+        equalizer?.release(); equalizer = null
+        virtualizer?.release(); virtualizer = null
+        bassBoost?.release(); bassBoost = null
     }
 
-    fun releaseEffects() {
-        release()
-    }
+    fun releaseEffects() { release() }
 }
